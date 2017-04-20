@@ -1,0 +1,17 @@
+.container{
+
+}
+
+
+
+.bordered {
+  border: 2px dotted purple;
+}
+
+.person__container:nth-child(odd){
+	background-color: lightblue;
+}
+
+.person__container:nth-child(even){
+	background-color: lightyellow;
+}
