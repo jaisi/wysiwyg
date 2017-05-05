@@ -42,8 +42,8 @@ for (; counter < person.length; counter++) {
 						// Give each person element a unique identifier
 						outputEl.innerHTML += `<div class="person__container" id="person--${counter}">
 	  					<header id="header--${counter}"><h1>${person[counter].title}</h1><blockquote>${person[counter].name}</blockquote></header>
-	  					<section id="section--${counter}" class="bio">${person[counter].bio}</section>
-	  					<p> ${person[counter].image}</p>
+	  					<section id="section--${counter}" class="bio">${person[counter].bio}<p> ${person[counter].image}</p></section>
+	  					
 	  					<footer id="footer--${counter}">${person[counter].lifespan.birth}-${person[counter].lifespan.death}</footer></div></div>`;
 	
 }
@@ -65,28 +65,27 @@ function handleClear(event){
 }	
 
 
-
+var container;
 // Event listeners are created
 for (var i = 0; i < containerEl.length; i++) {
-	  	containerEl.item(i).addEventListener("click", function (event) {
+	  	containerEl.item(i).addEventListener("click", function (event1) {
 	    
-	    // Logic to execute when the element is clicked
+	    	//logic for bordered
+		    event1.target.closest("div").classList.toggle("bordered");
+		    textInput.focus();
+
+		   container = event1.currentTarget;
+		  
+		   textInput.addEventListener("keypress", function(event2){
+		    		container.querySelector("section").innerHTML = input.value;		
+		    })
 	    
-	    //add border when person element is clicked
-	    parent = event.target.parentNode;
-	    console.log("parent", parent);
-	    gparent = parent.parentNode;
-	    console.log("gparent", gparent);
-	    gparent.classList.toggle("bordered");
-
-	    //bring focus to textbox when person element clicked
-	    textInput.focus();
-
-	   
 	  	});
 
 	  	
 	}
+
+
 
 
 
